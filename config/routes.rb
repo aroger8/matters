@@ -1,4 +1,4 @@
-Em2::Application.routes.draw do
+Matters::Application.routes.draw do
 
   #root :to => "project#show"
   #get "project/about"
