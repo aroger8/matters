@@ -1,4 +1,4 @@
-task import_list: :environment do
+task import_done: :environment do
   unless ENV['list_id']
     puts "the list_id argument is required; nothing was imported"
     exit 1
