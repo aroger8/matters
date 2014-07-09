@@ -11,7 +11,7 @@ class TrelloApi
   end
 
   def self.movement_actions_for_card(card_id)
-    api(:get, "/1/cards/#(card_id)/actions", filter: 'moveCardFromBoard, moveCardToBoard, updateCard:idList,createCard', fields: 'date,data,type', limit: '1000', formate: 'list', memberCreator: 'false')
+    api(:get, "/1/cards/#{card_id}/actions", filter: 'moveCardFromBoard, moveCardToBoard, updateCard:idList,createCard', fields: 'date,data,type', limit: '1000', formate: 'list', memberCreator: 'false')
   end
   
   def self.delete_webhooks(object_id)

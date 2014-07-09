@@ -13,6 +13,7 @@ module Importers
           case action_hash[:type]
 	  when 'createCard'
 	    done_card.start = Chronic.parse(action_hash[:date])
+	    done_card.save
 	  end
 	end
       end
