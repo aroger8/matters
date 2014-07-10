@@ -9,11 +9,15 @@ class TrelloApi
   def self.cards_in_list(list_id)
     api(:get, "/1/lists/#{list_id}/cards", members: 'true')
   end
+  # 
+  #def self.movement_actions_for_card(card_id)
+  #  api(:get, "/1/cards/#{card_id}/actions", filter: 'moveCardFromBoard, moveCardToBoard, updateCard, updateCard:idList,createCard', fields: 'date,data,type', limit: '1000', formate: 'list', memberCreator: 'false')
+  #end
 
   def self.movement_actions_for_card(card_id)
-    api(:get, "/1/cards/#{card_id}/actions", filter: 'moveCardFromBoard, moveCardToBoard, updateCard:idList,createCard', fields: 'date,data,type', limit: '1000', formate: 'list', memberCreator: 'false')
+    api(:get, "/1/cards/#{card_id}/actions", memberCreator: 'false')
   end
-  
+
   def self.delete_webhooks(object_id)
     api(:get, "/1/token/#{TOKEN}/webhooks").map { |w| w[:idModel]== object_id ? w[:id] : nil }.compact.each do |webhook_id|
       delete_webhook(webhook_ed)

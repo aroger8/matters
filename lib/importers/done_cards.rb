@@ -11,9 +11,11 @@ module Importers
 	actions = TrelloApi.movement_actions_for_card(done_card.trello_id) || []
 	actions.each do |action_hash|
           case action_hash[:type]
-	  when 'createCard'
+	  when 'updateCard'
 	    done_card.start = Chronic.parse(action_hash[:date])
 	    done_card.save
+	    #done_card.start = Chronic.parse(action_hash[:date])
+	    #done_card.save
 	  end
 	end
       end
