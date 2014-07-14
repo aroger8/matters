@@ -18,6 +18,10 @@ class TrelloApi
     api(:get, "/1/cards/#{card_id}/actions", memberCreator: 'false')
   end
 
+  def self.card_end(card_id)
+    api(:get, "/1/cards/#{card_id}", memberCreator: 'false')
+  end
+
   def self.delete_webhooks(object_id)
     api(:get, "/1/token/#{TOKEN}/webhooks").map { |w| w[:idModel]== object_id ? w[:id] : nil }.compact.each do |webhook_id|
       delete_webhook(webhook_ed)

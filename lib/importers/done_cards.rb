@@ -14,9 +14,12 @@ module Importers
 	  when 'updateCard'
 	    done_card.start = Chronic.parse(action_hash[:date])
 	    done_card.save
-	    #done_card.start = Chronic.parse(action_hash[:date])
-	    #done_card.save
-	  when 'updateCard:closed'
+	  end
+	end
+	actions = TrelloApi.card_end(done_card.trello_id) || []
+	actions.each do |action_hash|
+          case action_hash[:type]
+	  when 'dateLastActivity'
 	    done_card.end = Chronic.parse(action_hash[:date])
 	    done_card.save
 	  end
