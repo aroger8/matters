@@ -16,14 +16,19 @@ module Importers
 	    done_card.save
 	  end
 	end
-	actions = TrelloApi.card_end(done_card.trello_id) || []
-	actions.each do |action_hash|
-          case action_hash[:type]
-	  when 'dateLastActivity'
-	    done_card.end = Chronic.parse(action_hash[:date])
-	    done_card.save
-	  end
-	end
+	actions = TrelloApi.card_end(done_card.trello_id) || [] 
+	#actions.each do |action_hash|
+	date = Chronic.parse(actions[:dateLastActivity])
+	done_card.end = date
+	done_card.save
+	  #done_card.end = date
+	  #done_card.save
+         # case action_hash[:dateLastActivity]
+	 # when ':date'
+	 #  done_card.end = Chronic.parse(action_hash[:date])
+	 #   done_card.save
+	 # end
+	#end
       end
     end
   end
