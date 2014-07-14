@@ -1,4 +1,5 @@
 class DoneCard < ActiveRecord::Base
+  validates :trello_id, uniqueness: true
   def self.find_or_create(done_card_hash)
     done_card = find_or_initialize_by_trello_id(
       done_card_hash[:id],

@@ -16,6 +16,9 @@ module Importers
 	    done_card.save
 	    #done_card.start = Chronic.parse(action_hash[:date])
 	    #done_card.save
+	  when 'updateCard:closed'
+	    done_card.end = Chronic.parse(action_hash[:date])
+	    done_card.save
 	  end
 	end
       end
