@@ -19,6 +19,7 @@ module Importers
 	actions = TrelloApi.card_end(done_card.trello_id) || [] 
 	date = Chronic.parse(actions[:dateLastActivity])
 	done_card.end = date
+        done_card.done = true
 	done_card.save
       end
     end
