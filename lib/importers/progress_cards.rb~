@@ -1,7 +1,7 @@
 require 'open-uri'
 
 module Importers
-  class ProgressCards
+  class ProgressCard
     def self.import(trello_progress_list_id)
       cards = TrelloApi.cards_in_list(trello_progress_list_id) || []
       cards.each_with_index do |progress_card_hash, index|
