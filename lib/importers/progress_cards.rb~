@@ -1,11 +1,13 @@
 require 'open-uri'
 
 module Importers
-  class ProgressCard
+  class ProgressCards
     def self.import(trello_progress_list_id)
       cards = TrelloApi.cards_in_list(trello_progress_list_id) || []
       cards.each_with_index do |progress_card_hash, index|
         progress_card = DoneCard.find_or_create(progress_card_hash)
+	progress_card.done = false
+        progress_card.save
 	actions = TrelloApi.movement_actions_for_card(progress_card.trello_id) || []
 	actions.each do |action_hash|
           case action_hash[:type]

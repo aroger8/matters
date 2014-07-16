@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714155936) do
+ActiveRecord::Schema.define(version: 20140716164513) do
 
   create_table "done_cards", force: true do |t|
     t.string   "trello_id"
@@ -21,17 +21,9 @@ ActiveRecord::Schema.define(version: 20140714155936) do
     t.datetime "end"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "done"
   end
 
   add_index "done_cards", ["trello_id"], name: "index_done_cards_on_trello_id", unique: true
-
-  create_table "progress_cards", force: true do |t|
-    t.string   "trello_id"
-    t.string   "list_id"
-    t.string   "name"
-    t.datetime "start"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end
