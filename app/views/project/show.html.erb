@@ -1,6 +1,4 @@
-<h1>Project#show</h1>
-<p>Find me in app/views/project/show.html.erb</p>
-
-<p>
-  <a href="/about">About this page</a>
-</p>
+<h1>Project</h1>
+<% for done_c in @done_card %>
+  <h3><%=h done_c.name %></h3>
+<% end %>
